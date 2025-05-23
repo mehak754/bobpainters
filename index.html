@@ -1,0 +1,590 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>BOB Painting & Decoration Services</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/aos@2.3.1/dist/aos.css" />
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-SgOJa3DmI69IUzQ2PVdRZhwQ+dy64/BUtbMJw1MZ8t5HZApcHrRKUc4W0kG879m7" crossorigin="anonymous">
+
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+    }
+
+    .nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: #2c9aad;
+      color: white;
+      border: none;
+      padding: 10px;
+      cursor: pointer;
+      font-size: 16px;
+    }
+
+    .prev {
+      left: 10px;
+    }
+
+    .next {
+      right: 10px;
+    }
+
+    .navbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+  background-color:#2c9aad;
+      padding: 10px 20px;
+    }
+
+    .logo-container {
+      display: flex;
+      align-items: center;
+    }
+
+    .logo {
+      width: 50px;
+      height: 50px;
+    }
+
+    .site-name {
+      color: white;
+      font-size: 22px;
+      font-weight: bold;
+      margin-left: 15px;
+    }
+
+    .nav-links {
+      list-style: none;
+      display: flex;
+    }
+
+    .nav-links li {
+      margin: 0 15px;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-size: 18px;
+    }
+
+    .social-icons {
+      display: flex;
+      gap: 10px;
+    }
+
+    .social-icons img {
+      width: 30px;
+      height: 30px;
+    }
+
+    .foreground {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      text-align: center;
+      z-index: 2;
+    }
+
+    .search-bar {
+      margin: 10px auto;
+      padding: 10px 20px;
+      width: 600px;
+      border: 2px solid darkgrey;
+      border-radius: 30px;
+      background-color: lightgrey;
+      font-size: 16px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .search-bar:focus {
+      border-color: black;
+    }
+
+    .gallery-container {
+      width: 1350px;
+      margin: auto;
+      overflow: hidden;
+      position: relative;
+    }
+
+    .gallery img {
+      width: 1350px;
+      display: none;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+
+    .gallery img.active {
+      display: block;
+    }
+
+    .fade-in {
+      animation: fadeInUp 1s ease-in-out both;
+    }
+
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .our-process {
+  background-color: #2c9aad;
+  padding: 60px 20px;
+  color: #fffdd0;
+}
+
+.accordion-button {
+  background-color: #247a8c;
+  color: #fffdd0;
+}
+
+.accordion-button:not(.collapsed) {
+  background-color: #1b5e6a;
+  color: #fffdd0;
+}
+
+.accordion-body {
+  background-color: #1f7a8c;
+  color: #fffdd0;
+}
+
+.process-icons {
+  text-align: center;
+  color: #fffdd0;
+  margin-bottom: 20px;
+}
+
+.process-icons i {
+  margin: 0 15px;
+}
+body {
+    background: linear-gradient(-45deg, #1f7a8c, #2c9aad, #1b5e6a, #247a8c);
+    background-size: 400% 400%;
+    animation: gradientBG 15s ease infinite;
+  }
+
+  @keyframes gradientBG {
+    0% {background-position: 0% 50%;}
+    50% {background-position: 100% 50%;}
+    100% {background-position: 0% 50%;}
+  }
+
+  .multi-gallery-container {
+    max-width: 1350px;
+    margin: 40px auto;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .multi-gallery-wrapper {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+  }
+
+  .multi-gallery-wrapper img {
+    width: 25%;
+    height: auto;
+    opacity: 0.9;
+    border-radius: 10px;
+    padding: 5px;
+  }
+
+  .gallery-nav-btn {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: rgba(44, 154, 173, 0.8);
+    border: none;
+    color: white;
+    font-size: 30px;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
+  }
+
+  .gallery-prev { left: 0; }
+  .gallery-next { right: 0; }
+
+  footer {
+    background-color: #1b5e6a;
+    color: #080806;
+    padding: 30px 20px 10px;
+    text-align: center;
+  }
+
+  body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.footer {
+  background-color: #ffffff;
+  padding: 30px 20px;
+  margin-top: auto;
+  margin-bottom: 0px;
+}
+
+.footer-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-start;
+  max-width: 1200px;
+  margin-bottom: 0px;
+  margin: auto;
+  
+  
+}
+.footer-left {
+  flex: 1;
+  min-width: 200px;
+}
+.footer-center{
+  flex: 1;
+  min-width: 200px;
+  margin-top: 40px;
+
+}
+.footer-right{
+  flex: 1;
+  min-width: 200px;
+  margin-top: 40px;
+}
+
+.footer-logo {
+  height: 140px;
+  margin-right: 10px;
+}
+
+.footer-title {
+  margin: 0;
+  font-size: 1.5rem;
+}
+
+.footer-link {
+  display: block;
+  text-decoration: none;
+  color: black;
+  margin: 5px 0;
+  transition: color 0.3s;
+}
+
+.footer-link:hover {
+  color: #007bff; /* Change this to match your theme */
+}
+
+.footer-info {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 5px 0;
+  font-size: 1rem;
+}
+
+.copyright-bar {
+  background-color: rgb(29, 29, 29);
+  color: white;
+  text-align: center;
+  padding: 15px 0;
+  bottom: 0;
+  width: 100%;
+  z-index: 100;
+}
+.end{
+  background-color: #080806;
+  width: 100%;
+  height: 20px;
+
+}
+  </style>
+</head>
+<body>
+
+  <nav class="navbar">
+    <div class="logo-container">
+      <img src="mehak.png" alt="Site Logo" class="logo" />
+      <span class="site-name">Bob Painting Services
+    </div>
+    <ul class="nav-links">
+      <li><a href="#">Home</a></li>
+      <li><a href="#">About</a></li>
+      <li><a href="#">Services</a></li>
+      <li><a href="#">Contacts</a></li>
+    </ul>
+    <div class="social-icons">
+      <a href="https://www.instagram.com" target="_blank"><img src="i.png" alt="Instagram" /></a>
+      <a href="https://www.youtube.com" target="_blank"><img src="y.jpg" alt="YouTube" /></a>
+      <a href="https://www.facebook.com" target="_blank"><img src="f.png" alt="Facebook" /></a>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <div class="foreground">
+    <div style="text-align: center; position: relative;">
+      <h1 style="font-size: 3em; font-family:Times New Roman, Times, serif; font-weight: bold; color: white; text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.8), -4px -4px 5px rgba(198, 171, 241, 0.8); margin: 40px auto;">
+        BOB PAINTING & DECORATION SERVICES
+      </h1>
+      <p style="color: rgb(243, 238, 238); font-family: Arial, sans-serif; font-size: 1.2em; margin-top: 30px; text-shadow: 3px 3px 8px rgba(248, 245, 245, 0.6), -2px -2px 4px rgba(126, 172, 247, 0.7);">
+        At BOB PAINTING & DECORATION SERVICES, we don’t just paint walls—we create atmospheres. Our expert painters in Melbourne bring passion and precision to every project.
+      </p>
+    </div>
+  </div>
+
+  <!-- Gallery Section -->
+  <div class="gallery-container" style="position: relative; text-align: center;">
+    <div class="marquee-container" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0, 0, 0, 0.7); padding: 10px; width: 80%; text-align: center;">
+      <marquee direction="right" scrollamount="5" style="color: rgb(247, 243, 243); font-size: 1.5em;">
+        Interior Painting &nbsp;&bull;&nbsp; Exterior Painting &nbsp;&bull;&nbsp; Commercial Projects &nbsp;&bull;&nbsp; Residential Painting &nbsp;&bull;&nbsp; Wallpaper Installation &nbsp;&bull;&nbsp; Decorative Finishes &nbsp;&bull;&nbsp; Maintenance Services
+      </marquee>
+    </div>
+
+    <div class="gallery-container">
+      <button class="nav-button prev" onclick="prevImage()">❮</button>
+      <div class="gallery">
+        <img src="1.jpg" alt="Image 1"  class="active" />
+        <img src="2.jpeg" alt="Image 2"/>
+        <img src="3.jpeg" alt="Image 3" />
+        <img src="4.jpg" alt="Image 4" />
+      </div>
+      <button class="nav-button next" onclick="nextImage()">❯</button>
+    </div>
+  </div>
+
+  <!-- Why Choose Us Section -->
+  <section class="container my-5">
+    <div class="row align-items-center">
+      <!-- Left Image -->
+      <div class="col-md-6 mb-4 mb-md-0">
+        <img src="6.jpg" alt="Why Choose Us" class="img-fluid rounded shadow fade-in" />
+      </div>
+
+      <!-- Right Content -->
+      <div class="col-md-6">
+        <div class="card border-0 shadow-lg p-4 fade-in" style="background-color: #f8f9fa;">
+          <div class="card-body">
+            <h2 class="card-title mb-4 text-primary">Why Choose Us?</h2>
+            <p class="card-text" style="font-size: 1.1em;">
+              At <strong>BOB Painting & Decoration Services</strong>, we bring your vision to life with unmatched dedication and quality craftsmanship.
+            </p>
+            <ul class="list-unstyled">
+              <li class="mb-2"><i class="bi bi-check-circle-fill text-success me-2"></i>Certified & Experienced Painters</li>
+              <li class="mb-2"><i class="bi bi-palette-fill text-info me-2"></i>Personalized Color Consultation</li>
+              <li class="mb-2"><i class="bi bi-currency-dollar text-warning me-2"></i>Transparent & Affordable Pricing</li>
+              <li class="mb-2"><i class="bi bi-shield-check text-primary me-2"></i>Guaranteed Satisfaction</li>
+              <li class="mb-2"><i class="bi bi-clock-history text-danger me-2"></i>On-Time Project Completion</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- OUR PROCESS SECTION -->  <section class="our-process" data-aos="fade-up">
+    <h2>Our Process</h2>
+    <div class="process-icons">
+      <i class="fas fa-comments fa-2x"></i>
+      <i class="fas fa-palette fa-2x"></i>
+      <i class="fas fa-tools fa-2x"></i>
+      <i class="fas fa-paint-roller fa-2x"></i>
+      <i class="fas fa-check-circle fa-2x"></i>
+    </div>
+    <div class="container">
+      <div class="accordion" id="processAccordion"><div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne">
+          Initial Consultation & Estimate
+        </button>
+      </h2>
+      <div id="collapseOne" class="accordion-collapse collapse show" data-bs-parent="#processAccordion">
+        <div class="accordion-body">
+          We start by meeting with you to discuss your vision, requirements, and ideas. After understanding your needs, we provide a detailed and transparent estimate.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo">
+          Color Consultation
+        </button>
+      </h2>
+      <div id="collapseTwo" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
+        <div class="accordion-body">
+          We help you choose the perfect color scheme to match your style, lighting, and preferences.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree">
+          Surface Preparation
+        </button>
+      </h2>
+      <div id="collapseThree" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
+        <div class="accordion-body">
+          Our team ensures all surfaces are properly cleaned, sanded, and primed before painting begins.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour">
+          Professional Painting
+        </button>
+      </h2>
+      <div id="collapseFour" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
+        <div class="accordion-body">
+          Using high-quality paints and tools, we apply smooth, even coats for a flawless finish.
+        </div>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <h2 class="accordion-header">
+        <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive">
+          Final Walkthrough & Clean-Up
+        </button>
+      </h2>
+      <div id="collapseFive" class="accordion-collapse collapse" data-bs-parent="#processAccordion">
+        <div class="accordion-body">
+          We conduct a final walkthrough with you to ensure satisfaction and complete a full clean-up of the site.
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+<!-- MULTI IMAGE GALLERY -->
+<div class="multi-gallery-container">
+  <button class="gallery-nav-btn gallery-prev" onclick="slideGallery(-1)">&#10094;</button>
+  <div class="multi-gallery-wrapper" id="multiGallery">
+    <img src="2.jpeg" alt="img1">
+    <img src="8.jpg" alt="img2">
+    <img src="14.jpg" alt="img3">
+    <img src="10.jpg" alt="img4">
+    <img src="12.jpg" alt="img5">
+    <img src="4.jpg" alt="img6">
+    <img src="1.jpg" alt="img7">
+    <img src="3.jpeg" alt="img8">
+  </div>
+  <button class="gallery-nav-btn gallery-next" onclick="slideGallery(1)">&#10095;</button>
+</div>
+
+<!-- Footer Section -->
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Logo and Website Name -->
+    <div class="footer-left">
+      <img src="mk.png" alt="Logo" class="footer-logo">
+      <h2 class="footer-title">BOB PAINTING & DECORATION SERVICES</h2>
+    </div>
+
+    <!-- Navigation Links -->
+    <div class="footer-center">
+      <a href="#home" class="footer-link">Home</a>
+      <a href="#about" class="footer-link">About</a>
+      <a href="#services" class="footer-link">Services</a>
+      <a href="#contact" class="footer-link">Contact</a>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-right">
+      <div class="footer-info"><span>&#9993;</span> youremail@example.com</div>
+      <div class="footer-info"><span>&#9742;</span> +91 12345 67890</div>
+      <div class="footer-info"><span>&#127968;</span> Your City, Your Country</div>
+    </div>
+
+  </div>
+</footer>
+</section>
+<!-- Sticky Copyright -->
+<div class="copyright-bar">
+  <p>&copy; 2025 bobpainters.All rights reserved.</p>
+</div>
+<div class="end">
+   
+</div>
+
+  <!-- Scripts -->
+  <script>
+    let index = 0;
+    const images = document.querySelectorAll(".gallery img");
+    const totalImages = images.length;
+    let autoPlayInterval;
+
+    function updateGallery() {
+      images.forEach(img => img.classList.remove("active"));
+      images[index].classList.add("active");
+    }
+
+    function prevImage() {
+      index = (index > 0) ? index - 1 : totalImages - 1;
+      updateGallery();
+      resetAutoPlay();
+    }
+
+    function nextImage() {
+      index = (index < totalImages - 1) ? index + 1 : 0;
+      updateGallery();
+      resetAutoPlay();
+    }
+
+    function autoPlay() {
+      autoPlayInterval = setInterval(() => {
+        nextImage();
+      }, 3000);
+    }
+
+    function resetAutoPlay() {
+      clearInterval(autoPlayInterval);
+      autoPlay();
+    }
+
+    autoPlay();
+    </script>
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>  <script>
+      AOS.init();
+  </script>
+  <script>
+    let galleryIndex = 0;
+    const gallery = document.getElementById('multiGallery');
+    const imagesCount = gallery.children.length;
+    const visibleCount = 4;
+  
+    function slideGallery(step) {
+      galleryIndex += step;
+      if (galleryIndex < 0) galleryIndex = 0;
+      if (galleryIndex > imagesCount - visibleCount) galleryIndex = imagesCount - visibleCount;
+      gallery.style.transform = `translateX(-${galleryIndex * 25}%)`;
+    }
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.5/dist/js/bootstrap.bundle.min.js" integrity="sha384-k6d4wzSIapyDyv1kpU366/PK5hCdSbCRGRCMv+eplOQJWyd1fbcAu9OCUj5zNLiq" crossorigin="anonymous"></script>
+ 
+
+</body>
+</html>
